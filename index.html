@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Floor Is Lava - Monthly Tournament</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { margin: 0; padding: 0; background: #000; color: #fff; font-family: Arial, sans-serif; overflow: hidden; }
+        #menu-container { display: flex; justify-content: space-around; background: #111; padding: 12px 0; position: fixed; bottom: 0; width: 100%; border-top: 2px solid #333; }
+        .tab-btn { background: none; border: none; color: #888; font-size: 14px; font-weight: bold; cursor: pointer; }
+        .tab-btn.active { color: #00ff00; }
+        .page { display: none; height: calc(100vh - 50px); padding: 20px; box-sizing: border-box; overflow-y: auto; }
+        .page.active { display: block; }
+        #game-container { display: flex; justify-content: center; align-items: center; height: 100%; }
+        .tournament-banner { background: linear-gradient(45deg, #ff0055, #7a00ff); padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; color: #fff; box-shadow: 0 4px 15px rgba(122,0,255,0.4); }
+        .leaderboard-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #222; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <div id="Lootboxes" class="page active">
+        <div class="tournament-banner">🔥 MONTHLY TOURNAMENT: TOP-3 WIN 5000 STARS TOTAL! 🔥</div>
+        <h2 style="text-align:center;">Mystery Lootboxes</h2>
+        <p style="text-align:center; color:#aaa;">Spin for 50 Stars! 54% trash skins / 46% win up to 500 Stars!</p>
+    </div>
+
+    <div id="Play" class="page">
+        <div id="game-container"></div>
+    </div>
+
+    <div id="Shop" class="page">
+        <h2>Premium Shop</h2>
+        <div class="tournament-banner" style="background: linear-gradient(45deg, #00f0ff, #00ff00); color:#000;">
+            👑 LEGENDARY SKIN: MRBEAST (⭐ 3000 STARS) 👑
+        </div>
+        <p style="text-align:center; font-weight:bold;">🔥 Ability: +1 EXTRA LIFE! Immortal in Lava once! 🔥</p>
+        
+        <div style="background:#222; padding:15px; border-radius:10px; text-align:center; margin-top:20px; border: 2px dashed #ffd700;">
+            <p style="margin:0 0 5px 0; font-weight:bold; color:#ffd700;">⭐ COIN EXCHANGE (1:1 RATE) ⭐</p>
+            <button style="background:#00ff00; color:#000; font-weight:bold; border:none; padding:10px; border-radius:5px; margin: 5px;">💰 100 Coins = ⭐ 100</button>
+            <button style="background:#00ff00; color:#000; font-weight:bold; border:none; padding:10px; border-radius:5px; margin: 5px;">💰 500 Coins = ⭐ 500</button>
+        </div>
+    </div>
+
+    <div id="House" class="page">
+        <div class="tournament-banner" style="background: linear-gradient(45deg, #ff00ff, #00ffff); color: #000;">🇺🇸 YOUR LUXURY AMERICAN MANSION 🏡</div>
+        <h2 style="text-align:center;">Mansion Renovation</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+            <div style="background:#222; padding:15px; border-radius:10px; text-align:center; border: 1px solid #444;">
+                <p style="margin:0; font-weight:bold;">🧱 Cyber Wallpaper</p>
+                <span style="color:#00ff00; font-size:12px;">Price: 200 Coins</span>
+            </div>
+            <div style="background:#222; padding:15px; border-radius:10px; text-align:center; border: 1px solid #444;">
+                <p style="margin:0; font-weight:bold;">💡 Neon Lighting</p>
+                <span style="color:#00ff00; font-size:12px;">Price: 450 Coins</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="Top" class="page">
+        <h2>Monthly Leaderboard (Ends in 30 Days)</h2>
+        <div id="leaderboard-list">
+            <div class="leaderboard-item" style="color: #ffd700;"><span>🥇 1st Place: Player_USA_99</span><span>9,420m (Wins ⭐ 3000)</span></div>
+            <div class="leaderboard-item" style="color: #c0c0c0;"><span>🥈 2nd Place: Cyber_Ninja</span><span>7,150m (Wins ⭐ 1500)</span></div>
+            <div class="leaderboard-item" style="color: #cd7f32;"><span>🥉 3rd Place: Lava_Master</span><span>5,400m (Wins ⭐ 500)</span></div>
+        </div>
+    </div>
+
+    <div id="menu-container">
+        <button class="tab-btn active" onclick="switchTab('Lootboxes')">Lootboxes</button>
+        <button class="tab-btn" onclick="switchTab('Play')">Play</button>
+        <button class="tab-btn" onclick="switchTab('Shop')">Shop</button>
+        <button class="tab-btn" onclick="switchTab('House')">House 🏡</button>
+        <button class="tab-btn" onclick="switchTab('Top')">Top 🏆</button>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
